@@ -1,0 +1,69 @@
+<html>
+  <head>
+    <!-- Meta etiketleri ile ek bilgiler veriliyor -->
+    <meta name="author" content="Acemi tasarımcı">
+    <meta name="description" content="Acemi tasarımcı web okulu">
+    <meta name="keywords" content="web,html,css">
+    <meta http-equiv="content" content-type="text/html; charset=iso-8859-9">
+    <title>{{ sayfabasligi }}</title>
+  </head>
+  <script type="text/javascript" src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js'></script>
+<script type="text/javascript"> 
+  var myObj, i, x = "";
+  $(document).ready(function () {   
+      $("#Save").click(function () {  
+        /*suan kod çalısıyo baska json üzerinde ya benim kodum json değil ya da urli okuyamıyor*/
+        $.getJSON('http://localhost:5000/predict', function (data) {  
+          for (i in data) {
+                 
+                  x += data[i] + "<br>";
+                   }
+                   
+                   document.getElementById("demo").innerHTML = x;
+         
+          });   
+      });  
+  });  
+  </script>  
+  <!-- Body etiketi ile sayfamızdaki renkleri ayarlıyoruz -->
+  <body text="#000000" bgcolor="#ffffff" link="#808080" vlink="#eaeaea" alink="#000000">
+    
+    <h1> Bu büyük boyutlu ortalanmamı bir başlık</h1>
+    <br><center>
+      <h1> Bu da büyük boyutlu bir başlık fakat ortalanmış.</h1>
+    </center>
+
+    <!--
+      Center etiketi ile ortalama bittiği için buradan sonra sola dayalı
+      yazılacaktır.
+    -->
+    
+
+    <!-- p etiketi kendiliğinden bir satır boşluk verdiği için satır atlamadım -->
+    <p>
+      Merhaba, burası ve sayfa numarası {{ sayfaid }} dir
+    </p>
+
+    <p>
+
+    </p>
+    <!-- başka sayfalara link verelim -->
+    <a href="mailto:fni18444@gantep.edu.tr">Bana e-mail yollayın</a><br><br>
+    <br><br>
+
+    <!-- HTML dosyanızı yazdığınız dizine abc.png adli bir resim yerleştirin -->
+    Aşağıdaki resmin görüntülenmesi için HTML dosyanızın olduğu dizine
+    <b>abc.png</b> resmini oluşturmalısınız.<br>
+    <a href="http://www.belgeler.org"><img src="abc.png" border="0"></a>
+    <br><center>
+    <hr width=80%>
+    <u>Bu altı çizili bir yazı</u>, <i>bu yana yatık, italik, bir yazı</i><br>
+    Bu sayfanın amacı <acronym title="Hyper Text Markup Language">HTML</acronym>
+    kodları hakkında bilgi vermektir.
+    <hr width=80%>
+
+    <input type="button" id="Save" value="Save Data" /> 
+  
+    <p id="demo"></p>
+  </body>
+</html>
